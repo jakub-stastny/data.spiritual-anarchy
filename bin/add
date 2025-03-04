@@ -1,1 +1,27 @@
 #!/usr/bin/env bb
+
+(require '[babashka.process :as process]
+         '[clojure.edn :as edn]
+         '[babashka.fs :as fs])
+
+(def feed-path "data/feed.edn")
+(def feed (edn/read-string (slurp feed-path)))
+
+(defn get-user-input [prompt]
+  (print prompt) (flush) (read-line))
+
+(defn build-map-from-cli []
+  (let [name (get-user-input "Enter name: ")
+        link (get-user-input "Enter link: ")
+        current-date (java.util.Date.)
+        result-map {:name name
+                    :link link
+                    :created-at current-date}]
+    (println "\nCreated map:")
+    (println result-map)
+    result-map))
+
+(let [updated-feed (conj feed (build-map-from-cli))]
+  (spit feed-path (pr-str updated-feed)))
+
+;; (process/shell "cp" "-R" "src/assets" "pages/")
