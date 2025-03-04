@@ -1,7 +1,7 @@
 {:paths ["src"]
  :deps {cheshire/cheshire {:mvn/version "5.11.0"}
         babashka/fs {:mvn/version "0.5.24"}
-        babashka/process {:mvn/version "0.5.24"}
+        babashka/process {:mvn/version "0.5.22"}
         fipp/fipp {:mvn/version "0.6.27"}}
 
  :aliases
