@@ -16,5 +16,17 @@
 (defn tag-feed-path [tag]
   (str "data/tags/" tag ".json"))
 
-(defn get-user-input [prompt]
-  (print (str prompt ": ")) (flush) (read-line))
+(defn get-user-input
+  ([prompt]
+   (get-user-input prompt nil))
+
+  ([prompt default-value]
+   (let [label (if default-value
+                 (str prompt " (" default-value ")") prompt)]
+
+     (print (str label ": "))
+     (flush))
+
+   (let [value (read-line)]
+     (if (and default-value (empty? value))
+       default-value value))))
