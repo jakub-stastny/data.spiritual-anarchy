@@ -6,6 +6,13 @@
 (def feed-path "data/feed.edn")
 (def feed (edn/read-string (slurp feed-path)))
 
+(defn group-feed-by-tags []
+  (reduce (fn [acc {:keys [tags] :as item}]
+            (reduce (fn [acc tag]
+                      (update acc tag (fnil conj []) item))
+                    acc tags))
+          {} feed))
+
 (defn pretty-format [data]
   (with-out-str (fipp/pprint data)))
 

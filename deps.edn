@@ -1,9 +1,12 @@
 {:paths ["src"]
  :deps {cheshire/cheshire {:mvn/version "5.11.0"}
+        babashka/fs {:mvn/version "0.5.24"}
+        babashka/process {:mvn/version "0.5.24"}
         fipp/fipp {:mvn/version "0.6.27"}}
 
  :aliases
- ;; clojure -M:add
- {:add {:main-opts ["-m" "spiritual-anarchy.tools.add-runner"]}}}
-
-;; :extra-deps {org.babashka/http-client {:mvn/version "0.3.11"}}
+ {:add {:main-opts ["-m" "spiritual-anarchy.tools.add-runner"]}
+  :generate {:main-opts ["-m" "spiritual-anarchy.tools.generate-runner"]}
+  :backup
+  {:extra-deps {org.babashka/http-client {:mvn/version "0.3.11"}}
+   :main-opts ["-m" "spiritual-anarchy.tools.backup-runner"]}}}
