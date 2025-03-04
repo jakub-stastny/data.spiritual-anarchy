@@ -1,4 +1,4 @@
-(ns spiritual-anarchy.tools.backup-runner
+(ns spiritual-anarchy.tools.archive-runner
   (:require [clojure.string :as str]
             [spiritual-anarchy.config :as c]
             [babashka.fs :as fs]
@@ -24,5 +24,5 @@
           (System/exit 1)))))
 
   (shell "git" "add" "feed/archive")
-  (shell "git" "commit" "feed/archive" "-m" "Regenerated backup data")
+  (shell "git" "commit" "feed/archive" "-m" "Regenerated archive data")
   (shell "git checkout master"))

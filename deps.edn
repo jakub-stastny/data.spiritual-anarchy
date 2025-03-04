@@ -7,6 +7,6 @@
  :aliases
  {:add {:main-opts ["-m" "spiritual-anarchy.tools.add-runner"]}
   :generate {:main-opts ["-m" "spiritual-anarchy.tools.generate-runner"]}
-  :backup
+  :archive
   {:extra-deps {org.babashka/http-client {:mvn/version "0.3.11"}}
-   :main-opts ["-m" "spiritual-anarchy.tools.backup-runner"]}}}
+   :main-opts ["-m" "spiritual-anarchy.tools.archive-runner"]}}}
