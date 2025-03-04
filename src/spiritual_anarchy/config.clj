@@ -1,5 +1,6 @@
 (ns spiritual-anarchy.config
-  (:require [clojure.edn :as edn]
+  (:require [clojure.string :as str]
+            [clojure.edn :as edn]
             [fipp.edn :as fipp]
             [cheshire.core :as json]))
 
@@ -46,3 +47,9 @@
    (let [value (read-line)]
      (if (and default-value (empty? value))
        default-value value))))
+
+(defn archive-file [slug]
+  (str "feed/archive/" slug ".json"))
+
+(defn reddit? [link]
+  (str/includes? link "reddit.com/"))
