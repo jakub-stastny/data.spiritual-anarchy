@@ -11,8 +11,7 @@
     {:title title :link link :date-added current-date :tags tags}))
 
 (defn -main []
-  (let [feed c/feed
-        new-item (build-map-from-cli)
-        updated-feed (conj feed new-item)]
-    (spit c/feed-path (pr-str updated-feed))
+  (let [new-item (build-map-from-cli)
+        updated-feed (conj c/feed new-item)]
+    (c/add-to-feed new-item)
     (prn new-item)))
