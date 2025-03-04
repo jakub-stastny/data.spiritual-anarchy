@@ -1,0 +1,8 @@
+{:paths ["src"]
+ :deps {cheshire/cheshire {:mvn/version "5.11.0"}}
+
+ :aliases
+ ;; clojure -M:add
+ {:add {                                ;:extra-paths ["utils"]
+        :extra-deps {org.babashka/http-client {:mvn/version "0.3.11"}}
+        :main-opts ["-m" "spiritual-anarchy.tools.add-runner"]}}}
