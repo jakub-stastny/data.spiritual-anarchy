@@ -14,5 +14,6 @@
   (doseq [[tag posts] (c/group-feed-by-tags)]
     (c/write-tag-feed tag posts))
 
-  (shell "git" "commit" "-m" "Regenerated data")
+  (shell "git" "add" "feed")
+  (shell "git" "commit" "feed" "-m" "Regenerated data")
   (shell "git checkout master"))
