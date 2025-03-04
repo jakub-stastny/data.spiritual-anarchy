@@ -1,3 +1,5 @@
 * About
 
-rlwrap ./bin/add
+#+begin_src sh
+  rlwrap ./bin/run
+#+end_src

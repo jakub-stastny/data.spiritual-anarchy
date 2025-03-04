@@ -1,0 +1,5 @@
+#!/bin/sh
+
+clojure -M:add
+clojure -M:generate
+clojure -M:archive
