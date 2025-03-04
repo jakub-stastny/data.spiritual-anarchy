@@ -1,4 +1,4 @@
-data/**/*.json
+feed/
 .DS_Store
 .#*
 \#*#
