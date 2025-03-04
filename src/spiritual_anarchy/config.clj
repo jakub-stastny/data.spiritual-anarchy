@@ -7,11 +7,11 @@
 (def feed-path "data/feed.edn")
 (def feed (edn/read-string (slurp feed-path)))
 
-(defn group-feed-by-tags []
-  (reduce (fn [acc {:keys [tags] :as item}]
+(defn group-feed-by [key]
+  (reduce (fn [acc item]
             (reduce (fn [acc tag]
                       (update acc tag (fnil conj []) item))
-                    acc tags))
+                    acc (get item key)))
           {} feed))
 
 (defn pretty-format [data]
@@ -32,6 +32,12 @@
 
 (defn write-tag-feed [tag feed]
   (spit (tag-feed-path tag) (format-json feed)))
+
+(defn author-feed-path [author]
+  (str "feed/authors/" author ".json"))
+
+(defn write-author-feed [tag feed]
+  (spit (author-feed-path tag) (format-json feed)))
 
 (defn get-user-input
   ([prompt]

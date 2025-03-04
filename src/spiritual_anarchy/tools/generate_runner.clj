@@ -11,8 +11,11 @@
 
   (c/write-json-feed c/feed)
 
-  (doseq [[tag posts] (c/group-feed-by-tags)]
+  (doseq [[tag posts] (c/group-feed-by :tag)]
     (c/write-tag-feed tag posts))
+
+  (doseq [[author posts] (c/group-feed-by :author)]
+    (c/write-author-feed author posts))
 
   (shell "git" "add" "feed")
   (shell "git" "commit" "feed" "-m" "Regenerated data")
