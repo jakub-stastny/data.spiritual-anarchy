@@ -7,11 +7,16 @@
 (def feed-path "data/feed.edn")
 (def feed (edn/read-string (slurp feed-path)))
 
-(defn group-feed-by [key]
-  (reduce (fn [acc item]
+(defn group-feed-by-tag []
+  (reduce (fn [acc {:keys [tags] :as item}]
             (reduce (fn [acc tag]
                       (update acc tag (fnil conj []) item))
-                    acc (get item key)))
+                    acc tags))
+          {} feed))
+
+(defn group-feed-by-author []
+  (reduce (fn [acc {:keys [author] :as item}]
+            (update acc author (fnil conj []) item))
           {} feed))
 
 (defn pretty-format [data]

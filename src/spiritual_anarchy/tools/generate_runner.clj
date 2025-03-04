@@ -11,10 +11,12 @@
 
   (c/write-json-feed c/feed)
 
-  (doseq [[tag posts] (c/group-feed-by :tag)]
+  (doseq [[tag posts] (c/group-feed-by-tag)]
+    (prn :t tag posts)
     (c/write-tag-feed tag posts))
 
-  (doseq [[author posts] (c/group-feed-by :author)]
+  (doseq [[author posts] (c/group-feed-by-author)]
+    (prn :a author posts)
     (c/write-author-feed author posts))
 
   (shell "git" "add" "feed")
