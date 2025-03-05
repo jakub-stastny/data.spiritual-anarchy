@@ -11,6 +11,7 @@
       (System/exit 1)))
 
   (map fs/delete (fs/glob "feed" "**/*.json"))
+  (shell "find" "feed")
 
   (c/write-json-feed c/feed)
 
