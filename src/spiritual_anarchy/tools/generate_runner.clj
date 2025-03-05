@@ -10,7 +10,7 @@
     (catch Exception error
       (System/exit 1)))
 
-  (prn (map str (fs/glob "feed/tags" "*.json")))
+  (map fs/delete (fs/glob "feed" "**/*.json"))
 
   (c/write-json-feed c/feed)
 
