@@ -33,7 +33,7 @@
   (spit json-feed-path (format-json feed)))
 
 (defn tag-feed-path [tag]
-  (str "feed/tags/" tag ".json"))
+  (str "feed/tags/" (str/replace tag " " "-") ".json"))
 
 (defn write-tag-feed [tag feed]
   (spit (tag-feed-path tag) (format-json feed)))
