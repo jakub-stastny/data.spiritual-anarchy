@@ -9,14 +9,14 @@
     (catch Exception error
       (System/exit 1)))
 
+  (prn (map str (fs/glob "feed/tags" "*.json")))
+
   (c/write-json-feed c/feed)
 
   (doseq [[tag posts] (c/group-feed-by-tag)]
-    (prn :t tag posts)
     (c/write-tag-feed tag posts))
 
   (doseq [[author posts] (c/group-feed-by-author)]
-    (prn :a author posts)
     (c/write-author-feed author posts))
 
   (shell "git" "add" "feed")
