@@ -21,5 +21,7 @@
     (c/write-author-feed author posts))
 
   (shell "git" "add" "feed")
-  (shell "git" "commit" "feed" "-m" "Regenerated data")
+  (try
+    (shell "git" "commit" "feed" "-m" "Regenerated data")
+    (catch Exception error))
   (shell "git checkout master"))
