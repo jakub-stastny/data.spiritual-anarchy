@@ -29,7 +29,7 @@
 
 (def json-feed-path "feed/posts.json")
 
-(defn write-json-feed [feed]
+(defn write-post-index-feed [feed]
   (spit json-feed-path (format-json feed)))
 
 (defn tag-feed-path [tag]
@@ -38,11 +38,17 @@
 (defn write-tag-feed [tag feed]
   (spit (tag-feed-path tag) (format-json feed)))
 
+(defn write-tag-index-feed [tags]
+  (spit "feed/tags.json" (format-json tags)))
+
 (defn author-feed-path [author]
   (str "feed/authors/" author ".json"))
 
 (defn write-author-feed [tag feed]
   (spit (author-feed-path tag) (format-json feed)))
+
+(defn write-author-index-feed [authors]
+  (spit "feed/authors.json" (format-json authors)))
 
 (defn get-user-input
   ([prompt]
