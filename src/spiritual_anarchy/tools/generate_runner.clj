@@ -1,6 +1,7 @@
 (ns spiritual-anarchy.tools.generate-runner
   (:require [clojure.string :as str]
             [spiritual-anarchy.config :as c]
+            [babashka.fs :as fs]
             [babashka.process :refer [shell]]))
 
 (defn -main []
