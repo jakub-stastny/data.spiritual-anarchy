@@ -17,8 +17,9 @@
     (when-not (fs/exists? (c/archive-file slug))
       (if (c/reddit? link)
         (let [response (http/get (str link ".json"))]
-          (prn response)
-          (spit (c/archive-file slug) (:body response)))
+          (if (= (:status response) 200)
+            (spit (c/archive-file slug) (:body response))
+            (throw (ex-info "Request failed" {:response response}))))
         (do
           ;; TODO: save non-reddit page
           (println "TODO: Implement archiving non-reddit pages.")
