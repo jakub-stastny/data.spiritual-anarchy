@@ -27,5 +27,7 @@
           (System/exit 1)))))
 
   (shell "git" "add" "feed/archive")
-  (shell "git" "commit" "feed/archive" "-m" "Regenerated archive data")
+  (try
+    (shell "git" "commit" "feed/archive" "-m" "Regenerated archive data")
+    (catch Exception error))
   (shell "git checkout master"))
