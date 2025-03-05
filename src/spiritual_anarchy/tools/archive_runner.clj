@@ -11,6 +11,8 @@
     (catch Exception error
       (System/exit 1)))
 
+  (doseq [f (fs/glob "feed/archive" "**/*.json")] (fs/delete f))
+
   (doseq [{:keys [slug link]} c/feed]
     (when-not (fs/exists? (c/archive-file slug))
       (if (c/reddit? link)

@@ -10,10 +10,8 @@
     (catch Exception error
       (System/exit 1)))
 
-  (prn (map str (fs/glob "feed" "**/*.json")))
-  (doseq [f (fs/glob "feed" "**/*.json")]
-    (fs/delete f))
-  (prn (map str (fs/glob "feed" "**/*.json")))
+  (doseq [f (fs/glob "feed/tags" "*.json")] (fs/delete f))
+  (doseq [f (fs/glob "feed/authors" "*.json")] (fs/delete f))
 
   (c/write-json-feed c/feed)
 
